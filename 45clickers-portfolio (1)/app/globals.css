@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 7%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 10%;
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 7%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 217 100% 48%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 14.9%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 69%;
+  --accent: 217 100% 48%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 14.9%;
+  --input: 0 0% 14.9%;
+  --ring: 217 100% 48%;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  background-color: #121212;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* CapCut-style header */
+.capcut-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  background-color: rgba(18, 18, 18, 0.9);
+  backdrop-filter: blur(4px);
+}
+
+.capcut-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.capcut-nav-link {
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.capcut-nav-link:hover {
+  color: #0061f2;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.mobile-menu-link {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: white;
+  transition: color 0.3s ease;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.mobile-menu-link:hover {
+  color: #0061f2;
+}
+
+/* Button styles */
+.btn-primary {
+  background-color: #0061f2;
+  color: white;
+  border-radius: 0.375rem;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.btn-primary:hover {
+  background-color: #0050c0;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 3s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.animate-fade-in-up-delay {
+  animation: fadeInUp 1s ease-out 1s forwards;
+  opacity: 0;
+}
+
+.animate-glitch {
+  animation: glitch 0.5s infinite;
+  animation-play-state: paused;
+}
+
+.animate-glitch:hover {
+  animation-play-state: running;
+}
+
+/* Hover Effects */
+.hover-scale {
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hover-pulse:hover {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* Section Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card Hover Effects */
+.card-hover {
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.card-hover:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 97, 242, 0.1);
+}
